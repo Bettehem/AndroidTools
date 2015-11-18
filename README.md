@@ -86,10 +86,193 @@ and
 Preferences.deleteAllValues(this, "MyFile");
 ```
 
+# CustomAlertDialog
+By using the CustomAlertDialog tool provided by this tool, you can easily create AlertDialogs.
+Features:
+-Up to three buttons with any text you want
+-Custom titles
+-Custom messages
+-Easy management through a listener.
 
-#How to use
-In android studio, go to your modules build.gradle and add a new line to your dependencies:
+There are several ways on how CustomAlertDialog can be used.
+The tool provides static methods for quick use, and can be set up with one line of code.
+There are three of these methods, one for each button amount.(1 static method for using one button, 1 static method for using two buttons, and one static method for using all three buttons)
+These methods are called make and take following parameters:
+
+###### One button:
+1: `Context context`
+<br />
+2: `String title`
+<br />
+3: `String message`
+<br />
+4: `boolean isCancelable`
+<br />
+5: `String positiveButtonText`
+<br />
+6: `DialogButtonsListener dialogButtonsListener`
+<br />
+7: `final String id`
+
+###### Two buttons:
+1: `Context context`
+<br />
+2: `String title`
+<br />
+3: `String message`
+<br />
+4: `boolean isCancelable`
+<br />
+5: `String positiveButtonText`
+<br />
+6: `String negativeButtonText`
+<br />
+7: `DialogButtonsListener dialogButtonsListener`
+<br />
+8: `final String id`
+
+###### Three buttons:
+1: `Context context`
+<br />
+2: `String title`
+<br />
+3: `String message`
+<br />
+4: `boolean isCancelable`
+<br />
+5: `String positiveButtonText`
+<br />
+7: `String neutralButtonText`
+<br />
+8: `String negativeButtonText`
+<br />
+9: `DialogButtonsListener dialogButtonsListener`
+<br />
+10: `final String id`
+
+###### Explanation:
+`Context context` - context of the activity
+<br />
+`String title` - the title for the dialog
+<br />
+`String message` - the message for the dialog
+<br />
+`boolean isCancelable` - this value tells if the user can cancel the dialog by pressing outside of the dialog, or by pressing the back button.
+<br />
+`String positiveButtonText` - the text for the positive button
+<br />
+`String neutralButtonText` - the text for the neutral button
+<br />
+`String negativeButtonText` - the text for the negative button
+<br />
+`DialogButtonsListener dialogButtonsListener` - the listener for the button clicks
+<br />
+`final String id` - the id of the dialog. Every dialog needs an id, or tag, if you want to call it that. Or name.
+Anyway, this is useful when handling clicks. More on this below.
+
+#### Example 1, using static method:
 ```groovy
-compile 'com.bettehem.tools:tools:1.0.0@aar'
+//using two buttons as an example
+CustomAlertDialog.make(this, "Warning!", "Please connect to a network and try again", false, "Try again", "Exit", this, "networkErrorDialog").show();
+```
+
+#### Example 2, using non-static method:
+###### Note that when using a non-static method, you set the DialogButtonsListener separately.
+```groovy
+//using two buttons as an example
+//Set variables
+CustomAlertDialog customAlertDialog;
+customAlertDialog = new CustomAlertDialog(this, "Warning!", "Please connect to a network and try again", false, "Try again", "Exit", "networkErrorDialog");
+customAlertDialog.setDialogButtonsListener(this);
+customAlertDialog.show();
+```
+As of version 1.0.3, it is possible to set a few attributes on the fly when using non-static methods:
+`setDialogButtonsListener(DialogButtonsListener dialogButtonsListener)`
+`setCustomTitle(String title)`
+`setCustomMessage(String message)`
+`setIsCancelable(boolean isCancelable)`
+Note that these will only work if you have already set the CustomAlertDialog up.
+How to do it:
+```groovy
+CustomAlertDialog customAlertDialog;
+customAlertDialog = new CustomAlertDialog(this, "Warning!", "Please connect to a network and try again", false, "Try again", "Exit", "networkErrorDialog");
+customAlertDialog.setDialogButtonsListener(this);
+customAlertDialog.show();
+...
+...
+//At some later point AFTER the variable has been set up
+customAlertDialog.setCustomTitle("Error!");
+customAlertDialog.setMessage("That doesn't make any sense!");
+customAlertDialog.setIsCancelable(true);
+```
+How you shouldn't do it:
+```groovy
+CustomAlertDialog customAlertDialog;
+...
+//At some later point BEFORE the variable has been set up
+customAlertDialog.setCustomTitle("Error!");
+customAlertDialog.setMessage("That doesn't make any sense!");
+customAlertDialog.setIsCancelable(true);
+...
+customAlertDialog = new CustomAlertDialog(this, "Warning!", "Please connect to a network and try again", false, "Try again", "Exit", "networkErrorDialog");
+customAlertDialog.setDialogButtonsListener(this);
+customAlertDialog.show();
+```
+More functions will probably be added at later.
+
+###### Note:
+If you pass "this" as the DialogButtonsListener, that class has to implement the listener. The listener has three methods:
+`onPositiveButtonClicked`
+<br />
+`onNeutralButtonClicked`
+<br />
+`onNegativeButtonClicked`
+<br />
+These methods pass a string as a parameter (`String id`). See [DialogButtonsListener](https://github.com/Bettehem/AndroidTools#dialogbuttonslistener) for more information.
+
+#### DialogButtonsListener
+When a button is clicked in the dialog, the DialogButtonsListener is called.
+There is one method for each type of button.
+As an example, let's assume that the class that is using the CustomAlertDialog has implemented DialogButtonsListener,
+the methods would look like this:
+```groovy
+    @Override
+    public void onPositiveButtonClicked(String id) {
+        
+    }
+
+    @Override
+    public void onNeutralButtonClicked(String id) {
+
+    }
+
+    @Override
+    public void onNegativeButtonClicked(String id) {
+        
+    }
+```
+
+So, as you can see, each method has an id passed as a parameter.
+###### Example of using the listener
+```groovy
+    //handle the negative button click
+    @Override
+    public void onNegativeButtonClicked(String id) {
+        //if the id of the dialog is "networkErrorDialog, finish the activity."
+        if (id.contentEquals("networkErrorDialog")){
+            finish();
+        }
+    }
+```
+
+This is how you would use the listener.
+Since you can have multiple CustomAlertDialogs, but can have only one implemented DialogButtonsListener, you have to be able to tell from which dialog the listener was called.
+So just by simply testing if the id is what you want, you can perform a corresponding action.
+
+# How to use
+In Android Studio, go to your module's build.gradle and add a new line to your dependencies:
+```groovy
+compile 'com.bettehem.tools:tools:1.0.3@aar'
 ```
 Then sync your gradle and you're good to go!
+#### Note: If you see two possible import options when using these tools, use the tools from the "tools" package and not from "androidtools"!
