@@ -29,7 +29,7 @@ dependencies {
 
 
 group = 'com.bettehem.tools'
-version = '1.0.0'
+version = '1.0.1'
 
 task generateSourcesJar(type: Jar) {
     from android.sourceSets.main.java.srcDirs
@@ -56,10 +56,10 @@ bintray {
         name = 'com.bettehem.androidtools'
 
         version {
-            name = '1.0.0-tools'
+            name = '1.0.1-tools'
             desc = 'Useful tools when making android apps'
             released = new Date()
-            vcsTag = '1.0.0'
+            vcsTag = '1.0.1'
         }
 
         licenses = ['gpl-3.0']
