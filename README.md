@@ -1,3 +1,4 @@
+[How get this running with your project?](https://github.com/Bettehem/AndroidTools#how-to-use)
 # AndroidTools - Overview
 A set of tools, useful when creating android apps.
 
