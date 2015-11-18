@@ -49,8 +49,10 @@ task generateJavadocsJar(type: Jar) {
 generateJavadocsJar.dependsOn generateJavadocs
 
 bintray {
-    user = project.hasProperty('bintrayUser') ? project.property('bintrayUser') : System.getenv('BINTRAY_USER')
-    key = project.hasProperty('bintrayApiKey') ? project.property('bintrayApiKey') : System.getenv('BINTRAY_API_KEY')
+    user = project.hasProperty('bintrayUser') ? project.property('bintrayUser') : project.property('bintrayUser')
+    key = project.hasProperty('bintrayApiKey') ? project.property('bintrayApiKey') : project.property('bintrayApiKey')
+    //user = System.getenv('BINTRAY_USER')
+    //key = System.getenv('BINTRAY_API_KEY')
     pkg {
         repo = 'maven'
         name = 'com.bettehem.androidtools'
