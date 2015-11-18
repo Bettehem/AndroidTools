@@ -90,6 +90,6 @@ Preferences.deleteAllValues(this, "MyFile");
 #How to use
 In android studio, go to your modules build.gradle and add a new line to your dependencies:
 ```groovy
-compile 'com.bettehem.androidtools:1.0.0'
+compile 'com.bettehem.tools:tools:1.0.0@aar'
 ```
 Then sync your gradle and you're good to go!
