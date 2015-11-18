@@ -29,7 +29,7 @@ dependencies {
 
 
 group = 'com.bettehem.tools'
-version = '1.0.3'
+version = '1.0.4'
 
 task generateSourcesJar(type: Jar) {
     from android.sourceSets.main.java.srcDirs
@@ -49,17 +49,17 @@ task generateJavadocsJar(type: Jar) {
 generateJavadocsJar.dependsOn generateJavadocs
 
 bintray {
-    user = 'bettehem'
-    key = 'e6ae91984ae2ec41e8ba7b44e21c4cd376a7e146'
+    user = project.hasProperty('bintrayUser') ? project.property('bintrayUser') : System.getenv('BINTRAY_USER')
+    key = project.hasProperty('bintrayApiKey') ? project.property('bintrayApiKey') : System.getenv('BINTRAY_API_KEY')
     pkg {
         repo = 'maven'
         name = 'com.bettehem.androidtools'
 
         version {
-            name = '1.0.3-tools'
+            name = '1.0.4-tools'
             desc = 'Useful tools when making android apps'
             released = new Date()
-            vcsTag = '1.0.3'
+            vcsTag = '1.0.4'
         }
 
         licenses = ['gpl-3.0']
