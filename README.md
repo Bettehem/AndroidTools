@@ -88,7 +88,15 @@ Preferences.deleteAllValues(this, "MyFile");
 
 
 #How to use
-In android studio, go to your modules build.gradle and add a new line to your dependencies:
+In android studio, go to your modules build.gradle and add this:
+```groovy
+repositories {
+    maven {
+      url 'https://dl.bintray.com/bettehem/maven'
+    }
+}
+```
+and then add a new line to your dependencies:
 ```groovy
 compile 'com.bettehem.androidtools:1.0.0'
 ```
