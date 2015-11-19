@@ -1,7 +1,11 @@
-[How get this running with your project?](https://github.com/Bettehem/AndroidTools#how-to-use)
 # AndroidTools - Overview
 A set of tools, useful when creating android apps.
 
+#### INDEX:
+1. [SharedPreferences](https://github.com/Bettehem/AndroidTools#sharedpreferences)
+2. [CustomAlertDialog](https://github.com/Bettehem/AndroidTools#customalertdialog)
+3. [CustomNotification](https://github.com/Bettehem/AndroidTools#customnotification)
+4. [How to use](https://github.com/Bettehem/AndroidTools#how-to-use)
 
 # SharedPreferences
 Using the Preferences class provided by this tool, you can easily manage your SharedPreferences.
@@ -269,10 +273,45 @@ This is how you would use the listener.
 Since you can have multiple CustomAlertDialogs, but can have only one implemented DialogButtonsListener, you have to be able to tell from which dialog the listener was called.
 So just by simply testing if the id is what you want, you can perform a corresponding action.
 
+
+
+# CustomNotification
+By using the CustomNotification tool, you can easily create custom notifications.
+A notification can be created and displayed simply by calling `CustomNotification.make`, and to show it, just add `show()` to the end of the line.
+
+`CustomNotification.make` takes the following parameters:
+</br />
+1. `Context context`
+</br />
+2. `int iconId`
+</br />
+3. `String title`
+</br />
+4. `String message`
+</br />
+5. `Intent intent`
+</br />
+6. `boolean isPersistent`
+</br />
+7. `boolean dismissOnTap`
+</br />
+
+
+#### Example:
+```groovy
+//Set intent
+Intent myIntent = new Intent(this, MainActivity.class);
+//Make notification
+CustomNotification.make(this, R.drawable.cool_pic, "Hello", "I'm a notification!", myIntent, false, true).show();
+```
+
+###### Note that you can only use so long messages, because CustomNotification doesn't yet support expansion.
+
+
 # How to use
 In Android Studio, go to your module's build.gradle and add a new line to your dependencies:
 ```groovy
-compile 'com.bettehem.tools:tools:1.0.3@aar'
+compile 'com.bettehem.tools:tools:1.0.5@aar'
 ```
 Then sync your gradle and you're good to go!
 #### Note: If you see two possible import options when using these tools, use the tools from the "tools" package and not from "androidtools"!
