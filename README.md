@@ -311,7 +311,7 @@ CustomNotification.make(this, R.drawable.cool_pic, "Hello", "I'm a notification!
 # How to use
 In Android Studio, go to your module's build.gradle and add a new line to your dependencies:
 ```groovy
-compile 'com.bettehem.androidtools:tools:1.0.7@aar'
+compile 'com.bettehem.androidtools:androidtools:1.0.7@aar'
 ```
 Then sync your gradle and you're good to go!
-#### Note: If you see two possible import options when using these tools, use the tools from the "tools" package and not from "androidtools"!
+<!--#### Note: If you see two possible import options when using these tools, use the tools from the "tools" package and not from "androidtools"!-->
