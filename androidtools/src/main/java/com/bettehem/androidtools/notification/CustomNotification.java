@@ -1,4 +1,4 @@
-package com.bettehem.tools.notification;
+package com.bettehem.androidtools.notification;
 
 /*
     Copyright 2015  Chris Mustola

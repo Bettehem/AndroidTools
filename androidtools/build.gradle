@@ -1,0 +1,59 @@
+apply plugin: 'com.android.library'
+apply plugin: 'com.jfrog.bintray'
+apply plugin: 'com.github.dcendents.android-maven'
+
+group = 'com.bettehem.androidtools'
+version = '1.0.7'
+
+def gitPage = 'https://github.com/Bettehem/AndroidTools'
+def gitVcs = 'https://github.com/Bettehem/AndroidTools.git'
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion "23.0.2"
+
+    defaultConfig {
+        minSdkVersion 9
+        targetSdkVersion 23
+        versionCode 1
+        versionName version
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:appcompat-v7:23.1.1'
+}
+
+ext {
+    bintrayRepo = 'maven'
+    bintrayName = 'androidtools'
+
+    publishedGroupId = group
+    libraryName = 'AndroidTools'
+    artifact = 'androidtools'
+
+    libraryDescription = 'A set of tools, useful when creating android apps.'
+
+    siteUrl = gitPage
+    gitUrl = gitVcs
+
+    libraryVersion = version
+
+    developerId = 'Bettehem'
+    developerName = 'Chris Mustola'
+    developerEmail = 'chris.mustola@gmail.com'
+
+    licenseName = 'GNU General Public License 3.0'
+    licenseUrl = 'http://www.gnu.org/licenses/'
+    allLicenses = ["GPL-3.0"]
+}
+
+apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/installv1.gradle'
+apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/bintrayv1.gradle'

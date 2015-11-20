@@ -1,4 +1,4 @@
-package com.bettehem.tools.dialog;
+package com.bettehem.androidtools.dialog;
 
 /*
     Copyright 2015  Chris Mustola
@@ -18,7 +18,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.support.v7.app.AlertDialog;
 
-import com.bettehem.tools.interfaces.DialogButtonsListener;
+import com.bettehem.androidtools.interfaces.DialogButtonsListener;
 
 public class CustomAlertDialog {
     private AlertDialog alertDialog;
