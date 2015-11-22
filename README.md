@@ -309,9 +309,17 @@ CustomNotification.make(this, R.drawable.cool_pic, "Hello", "I'm a notification!
 
 
 # How to use
-In Android Studio, go to your module's build.gradle and add a new line to your dependencies:
+1. Add this maven repository to your projects build.gradle:
+`https://dl.bintray.com/bettehem/maven`.
+It should look something like this:
+```groovy
+maven{
+            url 'https://dl.bintray.com/bettehem/maven'
+        }
+```
+
+2. In Android Studio, go to your module's build.gradle and add a new line to your dependencies:
 ```groovy
 compile 'com.github.bettehem:androidtools:1.0.8'
 ```
 Then sync your gradle and you're good to go!
-<!--#### Note: If you see two possible import options when using these tools, use the tools from the "tools" package and not from "androidtools"!-->
