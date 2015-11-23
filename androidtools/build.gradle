@@ -10,7 +10,7 @@ def gitVcs = 'https://github.com/Bettehem/AndroidTools.git'
 
 ext {
     bintrayRepo = 'maven'
-    bintrayName = 'com.github.bettehem'
+    bintrayName = 'com.github.bettehem.androidtools'
 
     publishedGroupId = group
     libraryName = 'AndroidTools'
