@@ -2,15 +2,15 @@ apply plugin: 'com.android.library'
 apply plugin: 'com.jfrog.bintray'
 apply plugin: 'com.github.dcendents.android-maven'
 
-group = 'com.github.bettehem'
-version = '1.0.9'
+group = 'com.github.bettehem.androidtools'
+version = '1.0.9b'
 
 def gitPage = 'https://github.com/Bettehem/AndroidTools'
 def gitVcs = 'https://github.com/Bettehem/AndroidTools.git'
 
 ext {
     bintrayRepo = 'maven'
-    bintrayName = 'com.github.bettehem.androidtools'
+    bintrayName = 'androidtools'
 
     publishedGroupId = group
     libraryName = 'AndroidTools'
