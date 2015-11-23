@@ -80,6 +80,8 @@ public class Preferences {
         editor.apply();
     }
 
+
+
     public static void saveFloat(Context context, String valueName, float value) {
         sharedPreferences = context.getSharedPreferences(originalPreferenceFilename, Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
@@ -94,6 +96,8 @@ public class Preferences {
         editor.apply();
     }
 
+
+
     public static  void saveLong(Context context, String valueName, long value) {
         sharedPreferences = context.getSharedPreferences(originalPreferenceFilename, Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
@@ -107,6 +111,40 @@ public class Preferences {
         editor.putLong(valueName, value);
         editor.apply();
     }
+
+
+
+    public static void saveStringArray(Context context, String valueName, String[] array){
+        StringBuilder stringBuilder = new StringBuilder();
+        for (int i = 0; i < array.length; i++){
+            if (i != (array.length-1)){
+                stringBuilder.append(array[i]).append("_&#;#&_");
+            }else{
+                stringBuilder.append(array[i]);
+            }
+        }
+        sharedPreferences = context.getSharedPreferences(originalPreferenceFilename, Context.MODE_PRIVATE);
+        editor = sharedPreferences.edit();
+        editor.putString(valueName, stringBuilder.toString());
+        editor.apply();
+    }
+
+    public static void saveStringArray(Context context, String valueName, String[] array, String preferenceFilename){
+        StringBuilder stringBuilder = new StringBuilder();
+        for (int i = 0; i < array.length; i++){
+            if (i != (array.length-1)){
+                stringBuilder.append(array[i]).append("_&#;#&_");
+            }else{
+                stringBuilder.append(array[i]);
+            }
+        }
+        sharedPreferences = context.getSharedPreferences(preferenceFilename, Context.MODE_PRIVATE);
+        editor = sharedPreferences.edit();
+        editor.putString(valueName, stringBuilder.toString());
+        editor.apply();
+    }
+
+
 
 
     //-----     Loading      ------
@@ -165,6 +203,8 @@ public class Preferences {
         return sharedPreferences.getFloat(valueName, 0);
     }
 
+
+
     public static long loadLong(Context context, String valueName) {
         sharedPreferences = context.getSharedPreferences(originalPreferenceFilename, Context.MODE_PRIVATE);
         return sharedPreferences.getLong(valueName, 0);
@@ -174,6 +214,23 @@ public class Preferences {
         sharedPreferences = context.getSharedPreferences(preferenceFilename, Context.MODE_PRIVATE);
         return sharedPreferences.getLong(valueName, 0);
     }
+
+
+
+    public static String[] loadStringArray(Context context, String valueName){
+        sharedPreferences = context.getSharedPreferences(originalPreferenceFilename, Context.MODE_PRIVATE);
+        return sharedPreferences.getString(valueName, "").split("_&#;#&_");
+    }
+
+    public static String[] loadStringArray(Context context, String valueName, String preferenceFilename){
+        sharedPreferences = context.getSharedPreferences(preferenceFilename, Context.MODE_PRIVATE);
+        return sharedPreferences.getString(valueName, "").split("_&#;#&_");
+    }
+
+
+
+
+
 
 
     //-----     Deleting      ------
@@ -219,6 +276,13 @@ public class Preferences {
     }
 
 
+
+
+
+
+
+
+
     //-----     Checking if file exists      ------
     public static boolean checkIfFileExists(Context context){
         return new File(context.getFilesDir().getParent() + File.separator + "shared_prefs" + File.separator + originalPreferenceFilename + ".xml").exists();
@@ -226,51 +290,6 @@ public class Preferences {
 
     public boolean checkIfFileExists(Context context, String preferenceFilename){
         return new File(context.getFilesDir().getParent() + File.separator + "shared_prefs" + File.separator + preferenceFilename + ".xml").exists();
-    }
-
-    //-----     Saving Arrays      ------
-
-    public static void saveStringArray(Context context, String valueName, String[] array){
-        StringBuilder stringBuilder = new StringBuilder();
-        for (int i = 0; i < array.length; i++){
-            if (i != (array.length-1)){
-                stringBuilder.append(array[i]).append("_&#;#&_");
-            }else{
-                stringBuilder.append(array[i]);
-            }
-        }
-        sharedPreferences = context.getSharedPreferences(originalPreferenceFilename, Context.MODE_PRIVATE);
-        editor = sharedPreferences.edit();
-        editor.putString(valueName, stringBuilder.toString());
-        editor.apply();
-    }
-
-    public static void saveStringArray(Context context, String valueName, String[] array, String preferenceFilename){
-        StringBuilder stringBuilder = new StringBuilder();
-        for (int i = 0; i < array.length; i++){
-            if (i != (array.length-1)){
-                stringBuilder.append(array[i]).append("_&#;#&_");
-            }else{
-                stringBuilder.append(array[i]);
-            }
-        }
-        sharedPreferences = context.getSharedPreferences(preferenceFilename, Context.MODE_PRIVATE);
-        editor = sharedPreferences.edit();
-        editor.putString(valueName, stringBuilder.toString());
-        editor.apply();
-    }
-
-
-    //-----     Loading Arrays      ------
-
-    public static String[] loadStringArray(Context context, String valueName){
-        sharedPreferences = context.getSharedPreferences(originalPreferenceFilename, Context.MODE_PRIVATE);
-        return sharedPreferences.getString(valueName, "").split("_&#;#&_");
-    }
-
-    public static String[] loadStringArray(Context context, String valueName, String preferenceFilename){
-        sharedPreferences = context.getSharedPreferences(preferenceFilename, Context.MODE_PRIVATE);
-        return sharedPreferences.getString(valueName, "").split("_&#;#&_");
     }
 
 }
