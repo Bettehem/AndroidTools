@@ -1,4 +1,4 @@
-package com.bettehem.androidtools.interfaces;
+package com.github.bettehem.androidtools.interfaces;
 
 /*
     Copyright 2015  Chris Mustola

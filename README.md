@@ -309,17 +309,13 @@ CustomNotification.make(this, R.drawable.cool_pic, "Hello", "I'm a notification!
 
 
 # How to use
-1. Add this maven repository to your projects build.gradle:
-`https://dl.bintray.com/bettehem/maven`.
-It should look something like this:
+1. Add the mavenCentral repository to your projects build.gradle:
 ```groovy
-maven{
-            url 'https://dl.bintray.com/bettehem/maven'
-        }
+mavenCentral()
 ```
 
 2. In Android Studio, go to your module's build.gradle and add a new line to your dependencies:
 ```groovy
-compile 'com.github.bettehem:androidtools:1.0.9'
+compile 'com.github.bettehem:androidtools:1.0.10'
 ```
 Then sync your gradle and you're good to go!

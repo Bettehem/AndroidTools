@@ -1,4 +1,4 @@
-package com.bettehem.androidtools;
+package com.github.bettehem.androidtools;
 
 /*
     Copyright 2015  Chris Mustola
