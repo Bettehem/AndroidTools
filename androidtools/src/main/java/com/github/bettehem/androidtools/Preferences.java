@@ -464,6 +464,18 @@ public final class Preferences {
         }
     }
 
+    /**
+     * Deletes a specified file
+     *
+     * @param context The context of the current activity.
+     * @param fileName The name of the file that should be deleted.
+     * @param extension The file's extension. For example, if the file's extension is .zip, a string that contains "zip" should be passed.
+     *
+     * @return Returns true if the file was successfully deleted, and returns false if it wasn't for whatever reason.
+     */
+    public static boolean deleteFile(Context context, String fileName, String extension){
+        return new File(context.getFilesDir().getParent() + File.separator + "shared_prefs" + File.separator + fileName + "." + extension).delete();
+    }
 
 
 

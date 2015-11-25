@@ -30,6 +30,7 @@ Using the Preferences class provided by this tool, you can easily manage your Sh
 ###### Deleting
 `deleteIndividualValue`
 `deleteAllValues`
+`deleteFile`
 ###### Checking
 `checkIfFileExists`
 More might me added later.
@@ -91,6 +92,22 @@ and
 ```groovy
 Preferences.deleteAllValues(this, "MyFile");
 ```
+
+#### Example 5: Deleting files:
+```groovy
+Preferences.deleteFile(this, "RandomData", "txt");
+```
+`deleteFile` takes 3 parameters:
+1. `Context context`
+2. `String fileName`
+3. `String extension`
+
+Explanation:
+`fileName`: The name of the file that should be deleted.
+`extension`: The file's extension. For example, if the file's extension is .zip, a string that contains "zip" should be passed.
+
+###### Note: Returns a boolean value; true if the file was successfully deleted, and returns false if it wasn't for whatever reason.
+
 
 # CustomAlertDialog
 By using the CustomAlertDialog tool provided by this tool, you can easily create AlertDialogs.
@@ -316,7 +333,7 @@ CustomNotification.make(this, R.drawable.cool_pic, "Hello", "I'm a notification!
 
 1. In Android Studio, go to your module's build.gradle and add a new line to your dependencies:
 ```groovy
-compile 'com.github.bettehem:androidtools:1.1.1'
+compile 'com.github.bettehem:androidtools:1.1.2'
 ```
 Then sync your gradle and you're good to go!
 
@@ -327,6 +344,13 @@ AndroidTools is available here too:
 For you maven users out there, AndroidTools is available in the `mavenCentral()` repo too!
 
 # ChangeLog
+
+#### v1.1.2
+-Added a new method to the Preferences tool: `deleteFile`
+
+#### v1.1.1
+-Added more documentation to Preferences.
+-Changed the Preferences class to be final. 
 
 #### v1.1.0
 -Added documentation to Preferences. 
