@@ -320,7 +320,7 @@ maven{
 
 2. In Android Studio, go to your module's build.gradle and add a new line to your dependencies:
 ```groovy
-compile 'com.github.bettehem:androidtools:1.1.0'
+compile 'com.github.bettehem:androidtools:1.1.1'
 ```
 Then sync your gradle and you're good to go!
 

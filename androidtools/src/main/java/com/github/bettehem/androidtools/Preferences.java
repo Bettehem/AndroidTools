@@ -19,7 +19,10 @@ import android.content.SharedPreferences;
 
 import java.io.File;
 
-public class Preferences {
+/**
+ * Used for managing SharedPreferences in an easy way.
+ */
+public final class Preferences {
     //Variables are first created here.
     private static SharedPreferences sharedPreferences;
     private static SharedPreferences.Editor editor;

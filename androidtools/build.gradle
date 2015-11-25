@@ -3,7 +3,7 @@ apply plugin: 'com.jfrog.bintray'
 apply plugin: 'com.github.dcendents.android-maven'
 
 group = 'com.github.bettehem'
-version = '1.1.0'
+version = '1.1.1'
 
 def gitPage = 'https://github.com/Bettehem/AndroidTools'
 def gitVcs = 'https://github.com/Bettehem/AndroidTools.git'
