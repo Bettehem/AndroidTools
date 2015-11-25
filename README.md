@@ -1,3 +1,5 @@
+[CHANGELOG](https://github.com/Bettehem/AndroidTools#changelog)
+
 # AndroidTools - Overview
 A set of tools, useful when creating android apps.
 
@@ -311,11 +313,24 @@ CustomNotification.make(this, R.drawable.cool_pic, "Hello", "I'm a notification!
 # How to use
 1. Add the mavenCentral repository to your projects build.gradle:
 ```groovy
-mavenCentral()
+maven{
+    url 'https://dl.bintray.com/bettehem/maven'
+}
 ```
 
 2. In Android Studio, go to your module's build.gradle and add a new line to your dependencies:
 ```groovy
-compile 'com.github.bettehem:androidtools:1.0.10'
+compile 'com.github.bettehem:androidtools:1.1.0'
 ```
 Then sync your gradle and you're good to go!
+
+###### Note that if you want to use version 1.0.10 for whatever weird reason, you can also just use mavenCentral as the repo.
+
+This can be also downloaded here:
+ [ ![Download](https://api.bintray.com/packages/bettehem/maven/androidtools/images/download.svg) ](https://bintray.com/bettehem/maven/androidtools/_latestVersion)
+
+
+# ChangeLog
+
+#### v1.1.0
+-Added documentation to Preferences. 

@@ -34,6 +34,12 @@ public class Preferences {
     //-----     Saving      ------
 
 
+    /**
+     * Saves a String value using SharedPreferences.
+     * @param context The context of the current Activity.
+     * @param valueName The name for the value that will be saved.
+     * @param value The actual value to be saved.
+     */
     public static void saveString(Context context, String valueName, String value) {
         sharedPreferences = context.getSharedPreferences(originalPreferenceFilename, Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
@@ -41,6 +47,13 @@ public class Preferences {
         editor.apply();
     }
 
+    /**
+     * Saves a String value using SharedPreferences, with a custom filename.
+     * @param context The context of the current Activity.
+     * @param valueName The name for the value that will be saved.
+     * @param value The actual value to be saved.
+     * @param preferenceFilename The custom filename where the value should be saved.
+     */
     public static void saveString(Context context, String valueName, String value, String preferenceFilename) {
         sharedPreferences = context.getSharedPreferences(preferenceFilename, Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
@@ -50,6 +63,12 @@ public class Preferences {
 
 
 
+    /**
+     * Saves an Integer value using SharedPreferences.
+     * @param context The context of the current Activity.
+     * @param valueName The name for the value that will be saved.
+     * @param value The actual value to be saved.
+     */
     public static void saveInt(Context context, String valueName, int value) {
         sharedPreferences = context.getSharedPreferences(originalPreferenceFilename, Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
@@ -57,6 +76,13 @@ public class Preferences {
         editor.apply();
     }
 
+    /**
+     * Saves an Integer value using SharedPreferences, with a custom filename.
+     * @param context The context of the current Activity.
+     * @param valueName The name for the value that will be saved.
+     * @param value The actual value to be saved.
+     * @param preferenceFilename The custom filename where the value should be saved.
+     */
     public static void saveInt(Context context, String valueName, int value, String preferenceFilename) {
         sharedPreferences = context.getSharedPreferences(preferenceFilename, Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
@@ -66,6 +92,12 @@ public class Preferences {
 
 
 
+    /**
+     * Saves a boolean value using SharedPreferences.
+     * @param context The context of the current Activity.
+     * @param valueName The name for the value that will be saved.
+     * @param value The actual value to be saved.
+     */
     public static void saveBoolean(Context context, String valueName, boolean value) {
         sharedPreferences = context.getSharedPreferences(originalPreferenceFilename, Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
@@ -73,6 +105,13 @@ public class Preferences {
         editor.apply();
     }
 
+    /**
+     * Saves a boolean value using SharedPreferences, with a custom filename.
+     * @param context The context of the current Activity.
+     * @param valueName The name for the value that will be saved.
+     * @param value The actual value to be saved.
+     * @param preferenceFilename The custom filename where the value should be saved.
+     */
     public static void saveBoolean(Context context, String valueName, boolean value, String preferenceFilename) {
         sharedPreferences = context.getSharedPreferences(preferenceFilename, Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
@@ -82,6 +121,12 @@ public class Preferences {
 
 
 
+    /**
+     * Saves a float value using SharedPreferences.
+     * @param context The context of the current Activity.
+     * @param valueName The name for the value that will be saved.
+     * @param value The actual value to be saved.
+     */
     public static void saveFloat(Context context, String valueName, float value) {
         sharedPreferences = context.getSharedPreferences(originalPreferenceFilename, Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
@@ -89,6 +134,13 @@ public class Preferences {
         editor.apply();
     }
 
+    /**
+     * Saves a float value using SharedPreferences, with a custom filename.
+     * @param context The context of the current Activity.
+     * @param valueName The name for the value that will be saved.
+     * @param value The actual value to be saved.
+     * @param preferenceFilename The custom filename where the value should be saved.
+     */
     public static void saveFloat(Context context, String valueName, float value, String preferenceFilename) {
         sharedPreferences = context.getSharedPreferences(preferenceFilename, Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
@@ -98,6 +150,12 @@ public class Preferences {
 
 
 
+    /**
+     * Saves a long value using SharedPreferences.
+     * @param context The context of the current Activity.
+     * @param valueName The name for the value that will be saved.
+     * @param value The actual value to be saved.
+     */
     public static  void saveLong(Context context, String valueName, long value) {
         sharedPreferences = context.getSharedPreferences(originalPreferenceFilename, Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
@@ -105,6 +163,13 @@ public class Preferences {
         editor.apply();
     }
 
+    /**
+     * Saves a long value using SharedPreferences, with a custom filename.
+     * @param context The context of the current Activity.
+     * @param valueName The name for the value that will be saved.
+     * @param value The actual value to be saved.
+     * @param preferenceFilename The custom filename where the value should be saved.
+     */
     public static void saveLong(Context context, String valueName, long value, String preferenceFilename) {
         sharedPreferences = context.getSharedPreferences(preferenceFilename, Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
@@ -114,6 +179,12 @@ public class Preferences {
 
 
 
+    /**
+     * Saves a String array using SharedPreferences.
+     * @param context The context of the current Activity.
+     * @param valueName The name for the value that will be saved.
+     * @param array The actual value to be saved.
+     */
     public static void saveStringArray(Context context, String valueName, String[] array){
         StringBuilder stringBuilder = new StringBuilder();
         for (int i = 0; i < array.length; i++){
@@ -129,6 +200,13 @@ public class Preferences {
         editor.apply();
     }
 
+    /**
+     * Saves a String array using SharedPreferences, with a custom filename.
+     * @param context The context of the current Activity.
+     * @param valueName The name for the value that will be saved.
+     * @param array The actual value to be saved.
+     * @param preferenceFilename The custom filename where the value should be saved.
+     */
     public static void saveStringArray(Context context, String valueName, String[] array, String preferenceFilename){
         StringBuilder stringBuilder = new StringBuilder();
         for (int i = 0; i < array.length; i++){
@@ -149,6 +227,13 @@ public class Preferences {
 
     //-----     Loading      ------
 
+    /**
+     * Loads a String value using SharedPreferences.
+     * @param context The context of the current Activity.
+     * @param valueName The name for the value that should be loaded.
+     *
+     * @return Returns the requested String value. If not found, returns an empty string.
+     */
     public static String loadString(Context context, String valueName) {
         if (valueName != null) {
             sharedPreferences = context.getSharedPreferences(originalPreferenceFilename, Context.MODE_PRIVATE);
@@ -158,6 +243,14 @@ public class Preferences {
         }
     }
 
+    /**
+     * Loads a String array using SharedPreferences, with a custom filename.
+     * @param context The context of the current Activity.
+     * @param valueName The name for the value that will be saved.
+     * @param preferenceFilename The custom filename where the value should be loaded.
+     *
+     * @return Returns the requested String value. If not found, returns an empty string.
+     */
     public static String loadString(Context context, String valueName, String preferenceFilename) {
         if (valueName != null) {
             sharedPreferences = context.getSharedPreferences(preferenceFilename, Context.MODE_PRIVATE);
@@ -169,11 +262,26 @@ public class Preferences {
 
 
 
+    /**
+     * Loads an Integer value using SharedPreferences.
+     * @param context The context of the current Activity.
+     * @param valueName The name for the value that should be loaded.
+     *
+     * @return Returns the requested Integer value. If not found, returns an Integer with the value of 0.
+     */
     public static int loadInt(Context context, String valueName) {
         sharedPreferences = context.getSharedPreferences(originalPreferenceFilename, Context.MODE_PRIVATE);
         return sharedPreferences.getInt(valueName, 0);
     }
 
+    /**
+     * Loads an Integer value using SharedPreferences, with a custom filename.
+     * @param context The context of the current Activity.
+     * @param valueName The name for the value that will be saved.
+     * @param preferenceFilename The custom filename where the value should be loaded.
+     *
+     * @return Returns the requested Integer value. If not found, returns an Integer with the value of 0.
+     */
     public static int loadInt(Context context, String valueName, String preferenceFilename) {
         sharedPreferences = context.getSharedPreferences(preferenceFilename, Context.MODE_PRIVATE);
         return sharedPreferences.getInt(valueName, 0);
@@ -181,11 +289,26 @@ public class Preferences {
 
 
 
+    /**
+     * Loads a boolean value using SharedPreferences.
+     * @param context The context of the current Activity.
+     * @param valueName The name for the value that should be loaded.
+     *
+     * @return Returns the requested boolean value. If not found, returns false.
+     */
     public static boolean loadBoolean(Context context, String valueName) {
         sharedPreferences = context.getSharedPreferences(originalPreferenceFilename, Context.MODE_PRIVATE);
         return sharedPreferences.getBoolean(valueName, false);
     }
 
+    /**
+     * Loads a boolean value using SharedPreferences, with a custom filename.
+     * @param context The context of the current Activity.
+     * @param valueName The name for the value that will be saved.
+     * @param preferenceFilename The custom filename where the value should be loaded.
+     *
+     * @return Returns the requested boolean value. If not found, returns false.
+     */
     public boolean loadBoolean(Context context, String valueName, String preferenceFilename) {
         sharedPreferences = context.getSharedPreferences(preferenceFilename, Context.MODE_PRIVATE);
         return sharedPreferences.getBoolean(valueName, false);
@@ -193,11 +316,26 @@ public class Preferences {
 
 
 
+    /**
+     * Loads a float value using SharedPreferences.
+     * @param context The context of the current Activity.
+     * @param valueName The name for the value that should be loaded.
+     *
+     * @return Returns the requested float value. If not found, returns 0.
+     */
     public static float loadFloat(Context context, String valueName) {
         sharedPreferences = context.getSharedPreferences(originalPreferenceFilename, Context.MODE_PRIVATE);
         return sharedPreferences.getFloat(valueName, 0);
     }
 
+    /**
+     * Loads a float value using SharedPreferences, with a custom filename.
+     * @param context The context of the current Activity.
+     * @param valueName The name for the value that will be saved.
+     * @param preferenceFilename The custom filename where the value should be loaded.
+     *
+     * @return Returns the requested float value. If not found, returns 0.
+     */
     public static float loadFloat(Context context, String valueName, String preferenceFilename) {
         sharedPreferences = context.getSharedPreferences(preferenceFilename, Context.MODE_PRIVATE);
         return sharedPreferences.getFloat(valueName, 0);
@@ -205,11 +343,26 @@ public class Preferences {
 
 
 
+    /**
+     * Loads a long value using SharedPreferences.
+     * @param context The context of the current Activity.
+     * @param valueName The name for the value that should be loaded.
+     *
+     * @return Returns the requested long value. If not found, returns 0.
+     */
     public static long loadLong(Context context, String valueName) {
         sharedPreferences = context.getSharedPreferences(originalPreferenceFilename, Context.MODE_PRIVATE);
         return sharedPreferences.getLong(valueName, 0);
     }
 
+    /**
+     * Loads a long value using SharedPreferences, with a custom filename.
+     * @param context The context of the current Activity.
+     * @param valueName The name for the value that will be loaded.
+     * @param preferenceFilename The custom filename where the value should be saved.
+     *
+     * @return Returns the requested long value. If not found, returns 0.
+     */
     public long loadLong(Context context, String valueName, String preferenceFilename) {
         sharedPreferences = context.getSharedPreferences(preferenceFilename, Context.MODE_PRIVATE);
         return sharedPreferences.getLong(valueName, 0);
@@ -217,11 +370,26 @@ public class Preferences {
 
 
 
+    /**
+     * Loads a String array using SharedPreferences.
+     * @param context The context of the current Activity.
+     * @param valueName The name for the value that should be loaded.
+     *
+     * @return Returns the requested String array. If not found, returns an empty String.
+     */
     public static String[] loadStringArray(Context context, String valueName){
         sharedPreferences = context.getSharedPreferences(originalPreferenceFilename, Context.MODE_PRIVATE);
         return sharedPreferences.getString(valueName, "").split("_&#;#&_");
     }
 
+    /**
+     * Loads a String array using SharedPreferences, with a custom filename.
+     * @param context The context of the current Activity.
+     * @param valueName The name for the value that will be loaded.
+     * @param preferenceFilename The custom filename where the value should be saved.
+     *
+     * @return Returns the requested long value. If not found, returns an empty String.
+     */
     public static String[] loadStringArray(Context context, String valueName, String preferenceFilename){
         sharedPreferences = context.getSharedPreferences(preferenceFilename, Context.MODE_PRIVATE);
         return sharedPreferences.getString(valueName, "").split("_&#;#&_");
@@ -235,6 +403,11 @@ public class Preferences {
 
     //-----     Deleting      ------
 
+    /**
+     * Deletes a value using SharedPreferences.
+     * @param context The context of the current Activity.
+     * @param valueName The name for the value that should be deleted.
+     */
     public static void deleteIndividualValue(Context context, String valueName) {
         sharedPreferences = context.getSharedPreferences(originalPreferenceFilename, Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
@@ -242,6 +415,11 @@ public class Preferences {
         editor.apply();
     }
 
+    /**
+     * Deletes a value using SharedPreferences from a custom file.
+     * @param context The context of the current Activity.
+     * @param valueName The name for the value that should be deleted.
+     */
     public static void deleteIndividualValue(Context context, String valueName, String preferenceFilename) {
         sharedPreferences = context.getSharedPreferences(preferenceFilename, Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
@@ -249,6 +427,10 @@ public class Preferences {
         editor.apply();
     }
 
+    /**
+     * Deletes all values from a file using SharedPreferences.
+     * @param context The context of the current Activity.
+     */
     public static void deleteAllValues(Context context) {
         sharedPreferences = context.getSharedPreferences(originalPreferenceFilename, Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
@@ -262,6 +444,10 @@ public class Preferences {
         }
     }
 
+    /**
+     * Deletes all values from a custom file using SharedPreferences.
+     * @param context The context of the current Activity.
+     */
     public static void deleteAllValues(Context context, String preferenceFilename) {
         sharedPreferences = context.getSharedPreferences(preferenceFilename, Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
@@ -284,10 +470,22 @@ public class Preferences {
 
 
     //-----     Checking if file exists      ------
+    /**
+     * Deletes all values from a file using SharedPreferences.
+     * @param context The context of the current Activity.
+     *
+     * @return Returns true if the file exists, and false if it doesn't.
+     */
     public static boolean checkIfFileExists(Context context){
         return new File(context.getFilesDir().getParent() + File.separator + "shared_prefs" + File.separator + originalPreferenceFilename + ".xml").exists();
     }
 
+    /**
+     * Deletes all values from a custom file using SharedPreferences.
+     * @param context The context of the current Activity.
+     *
+     * @return Returns true if the file exists, and false if it doesn't.
+     */
     public boolean checkIfFileExists(Context context, String preferenceFilename){
         return new File(context.getFilesDir().getParent() + File.separator + "shared_prefs" + File.separator + preferenceFilename + ".xml").exists();
     }
