@@ -60,6 +60,22 @@ You only need to give the context, the value name and optionally a custom filena
 
 #### Example 3, Checking files:
 ```groovy
+Preferences.fileExists(this, "RandomData", "txt");
+```
+`fileExists` takes 3 parameters:
+1. `Context context`
+2. `String fileName`
+3. `String extension`
+
+Explanation:
+`fileName`: The name of the file that should be checked.
+`extension`: The file's extension. For example, if the file's extension is .zip, a string that contains "zip" should be passed.
+
+###### Note: Returns a boolean value; true if the file exists, and returns false if it doesn't.
+
+-------------------------------------------------------------
+###### `checkIfFileExists` is deprecated! use `fileExists` instead!
+```groovy
 Preferences.checkIfFileExists(this);
 ```
 This method will check if a file exists. If no file name is given as a second parameter, it will check if the Settings file exists.
@@ -71,6 +87,8 @@ Preferences.checkIfFileExists(this, "MyFile");
 ###### Note:
 checkIfFileExists will return a boolean value, depending on the files existence. If the file exists, true will be returned, if not, false will be returned.
 By just calling the method, nothing will really happen. You should save the result in to a variable so you can actually use it for something.
+
+-------------------------------------------------------------
 
 
 #### Example 4: Deleting values:
@@ -333,7 +351,7 @@ CustomNotification.make(this, R.drawable.cool_pic, "Hello", "I'm a notification!
 
 1. In Android Studio, go to your module's build.gradle and add a new line to your dependencies:
 ```groovy
-compile 'com.github.bettehem:androidtools:1.1.2'
+compile 'com.github.bettehem:androidtools:1.1.3'
 ```
 Then sync your gradle and you're good to go!
 
@@ -344,6 +362,10 @@ AndroidTools is available here too:
 For you maven users out there, AndroidTools is available in the `mavenCentral()` repo too!
 
 # ChangeLog
+#### v1.1.3
+-Added new method to the Preferences tool: `fileExists`
+-Changed `checkIfFileExists(Context context, String preferenceFilename)` to be static
+-Deprecated the `checkIfFileExists` -methods in favor of the new method `fileExists`
 
 #### v1.1.2
 -Added a new method to the Preferences tool: `deleteFile`

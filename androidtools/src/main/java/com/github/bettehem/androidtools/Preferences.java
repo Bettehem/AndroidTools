@@ -228,6 +228,7 @@ public final class Preferences {
 
 
 
+
     //-----     Loading      ------
 
     /**
@@ -486,11 +487,53 @@ public final class Preferences {
 
     //-----     Checking if file exists      ------
     /**
+     *
+     * @param context The context of the current Activity
+     * @param fileName The name of the file that should be checked.
+     * @param extension The file's extension. For example, if the file's extension is .zip, a string that contains "zip" should be passed.
+     * @return Returns true if the file exists, and false if it doesn't.
+     */
+    public static boolean fileExists(Context context, String fileName, String extension){
+        return new File(context.getFilesDir().getParent() + File.separator + "shared_prefs" + File.separator + fileName + "." + extension).exists();
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    //-----     DEPRECATED METHODS      ------
+    /**
      * Deletes all values from a file using SharedPreferences.
      * @param context The context of the current Activity.
      *
      * @return Returns true if the file exists, and false if it doesn't.
+     *
+     * @deprecated Deprecated since the extension cannot be defined. Use the method fileExists instead.
      */
+    @Deprecated
     public static boolean checkIfFileExists(Context context){
         return new File(context.getFilesDir().getParent() + File.separator + "shared_prefs" + File.separator + originalPreferenceFilename + ".xml").exists();
     }
@@ -498,10 +541,14 @@ public final class Preferences {
     /**
      * Deletes all values from a custom file using SharedPreferences.
      * @param context The context of the current Activity.
+     * @param preferenceFilename The name of the file should be entered here.
      *
      * @return Returns true if the file exists, and false if it doesn't.
+     *
+     * @deprecated Deprecated since the extension cannot be defined. Use the method fileExists instead.
      */
-    public boolean checkIfFileExists(Context context, String preferenceFilename){
+    @Deprecated
+    public static boolean checkIfFileExists(Context context, String preferenceFilename){
         return new File(context.getFilesDir().getParent() + File.separator + "shared_prefs" + File.separator + preferenceFilename + ".xml").exists();
     }
 
