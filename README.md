@@ -380,4 +380,4 @@ For you maven users out there, AndroidTools is available in the `mavenCentral()`
 #### v1.1.0
 -Added documentation to Preferences. 
 
-[Back to top](https://github.com/Bettehem/AndroidTools#androidtools---overview)
+[Back to top](#androidtools---overview)
