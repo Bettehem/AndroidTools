@@ -369,8 +369,11 @@ For you maven users out there, AndroidTools is available in the `mavenCentral()`
 
 #### v1.1.3
 -Added new method to the Preferences tool: `fileExists`
+<br />
 -Changed `checkIfFileExists(Context context, String preferenceFilename)` to be static
+<br />
 -Deprecated the `checkIfFileExists` -methods in favor of the new method `fileExists`
+<br />
 
 #### v1.1.2
 -Added a new method to the Preferences tool: `deleteFile`
@@ -381,3 +384,5 @@ For you maven users out there, AndroidTools is available in the `mavenCentral()`
 
 #### v1.1.0
 -Added documentation to Preferences. 
+
+[Back to top](#androidtools---overview)
