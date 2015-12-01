@@ -497,6 +497,43 @@ public final class Preferences {
         return new File(context.getFilesDir().getParent() + File.separator + "shared_prefs" + File.separator + fileName + "." + extension).exists();
     }
 
+    public static boolean filenameContains(Context context, String possibleFilename){
+        if (new File(context.getFilesDir().getParent() + File.separator + "shared_prefs").exists() && new File(context.getFilesDir().getParent() + File.separator + "shared_prefs").isDirectory()){
+            File directory = new File(context.getFilesDir().getParent() + File.separator + "shared_prefs");
+            File[] fileList = directory.listFiles();
+            boolean fileExists = false;
+
+            for (File f : fileList){
+                if (f.isFile()){
+                    if (f.getName().contains(possibleFilename)){
+                        fileExists = true;
+                        break;
+                    }
+                }
+            }
+            return fileExists;
+        }else{
+            boolean preferencesDirectoryMade = new File(context.getFilesDir().getParent() + File.separator + "shared_prefs").mkdir();
+            if (preferencesDirectoryMade){
+                File directory = new File(context.getFilesDir().getParent() + File.separator + "shared_prefs");
+                File[] fileList = directory.listFiles();
+                boolean fileExists = false;
+
+                for (File f : fileList){
+                    if (f.isFile()){
+                        if (f.getName().contains(possibleFilename)){
+                            fileExists = true;
+                            break;
+                        }
+                    }
+                }
+                return fileExists;
+            }else {
+                return false;
+            }
+        }
+    }
+
 
 
 

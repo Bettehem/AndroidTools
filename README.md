@@ -347,7 +347,7 @@ CustomNotification.make(this, R.drawable.cool_pic, "Hello", "I'm a notification!
 
 # How to use
 
-#### Versions before 1.0.10 are no longer available, please update to a newer version!
+#### A Beta version is available: 1.1.4-beta, but it might be unstable. Use only for testing!
 
 1. In Android Studio, go to your module's build.gradle and add a new line to your dependencies:
 ```groovy
@@ -362,6 +362,11 @@ AndroidTools is available here too:
 For you maven users out there, AndroidTools is available in the `mavenCentral()` repo too!
 
 # ChangeLog
+
+#### v1.1.4-beta (Might be unstable)
+-Added new method for checking if a file exists with only part of the name given.
+-No documentation for the new method, and it might not work anyway.
+
 #### v1.1.3
 -Added new method to the Preferences tool: `fileExists`
 -Changed `checkIfFileExists(Context context, String preferenceFilename)` to be static
