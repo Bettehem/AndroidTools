@@ -487,8 +487,9 @@ public final class Preferences {
 
     //-----     Checking if file exists      ------
     /**
+     * Checks if a file exists.
      *
-     * @param context The context of the current Activity
+     * @param context The context of the current Activity.
      * @param fileName The name of the file that should be checked.
      * @param extension The file's extension. For example, if the file's extension is .zip, a string that contains "zip" should be passed.
      * @return Returns true if the file exists, and false if it doesn't.
@@ -497,6 +498,12 @@ public final class Preferences {
         return new File(context.getFilesDir().getParent() + File.separator + "shared_prefs" + File.separator + fileName + "." + extension).exists();
     }
 
+    /**
+     * Checks if a file exists with only a part of the name given.
+     * @param context The context of the current Activity.
+     * @param possibleFilename A part of the name of a possible file.
+     * @return Returns true if a file like this exists, and false if it doesn't.
+     */
     public static boolean filenameContains(Context context, String possibleFilename){
         if (new File(context.getFilesDir().getParent() + File.separator + "shared_prefs").exists() && new File(context.getFilesDir().getParent() + File.separator + "shared_prefs").isDirectory()){
             File directory = new File(context.getFilesDir().getParent() + File.separator + "shared_prefs");

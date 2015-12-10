@@ -32,7 +32,9 @@ Using the Preferences class provided by this tool, you can easily manage your Sh
 `deleteAllValues`
 `deleteFile`
 ###### Checking
-`checkIfFileExists`
+`checkIfFileExists (NOTE: DEPRECATED! USE fileExists INSTEAD)`
+`fileExists`
+`filenameContains`
 More might me added later.
 
 #### Example 1, Saving data:
@@ -59,19 +61,6 @@ You only need to give the context, the value name and optionally a custom filena
 
 
 #### Example 3, Checking files:
-```groovy
-Preferences.fileExists(this, "RandomData", "txt");
-```
-`fileExists` takes 3 parameters:
-1. `Context context`
-2. `String fileName`
-3. `String extension`
-
-Explanation:
-`fileName`: The name of the file that should be checked.
-`extension`: The file's extension. For example, if the file's extension is .zip, a string that contains "zip" should be passed.
-
-###### Note: Returns a boolean value; true if the file exists, and returns false if it doesn't.
 
 -------------------------------------------------------------
 ###### `checkIfFileExists` is deprecated! use `fileExists` instead!
@@ -89,6 +78,36 @@ checkIfFileExists will return a boolean value, depending on the files existence.
 By just calling the method, nothing will really happen. You should save the result in to a variable so you can actually use it for something.
 
 -------------------------------------------------------------
+<br />
+<br />
+
+```groovy
+Preferences.fileExists(this, "RandomData", "txt");
+```
+`fileExists` takes 3 parameters:
+1. `Context context`
+2. `String fileName`
+3. `String extension`
+
+Explanation:
+`fileName`: The name of the file that should be checked.
+`extension`: The file's extension. For example, if the file's extension is .zip, a string that contains "zip" should be passed.
+
+###### Note: Returns a boolean value; true if the file exists, and returns false if it doesn't.
+
+
+```groovy
+Preferences.filenameContains(this, "Random");
+```
+`filenameContains` takes 2 parameters:
+1. `Context context`
+2. `String possibleFilename`
+
+Explanation:
+`fileName`: A part of the name of a possible file. This means, that if for example, you have a file with the name RandomData.txt, you can just enter "Random", or "Rand", or Data, or "RandomDat", or "omD", or whatever you want.
+This is useful when you might not know the whole filename, but you still want to check if it exists.
+
+
 
 
 #### Example 4: Deleting values:
@@ -347,11 +366,13 @@ CustomNotification.make(this, R.drawable.cool_pic, "Hello", "I'm a notification!
 
 # How to use
 
+<!--
 #### A Beta version is available: 1.1.4-beta, but it might be unstable. Use only for testing!
+-->
 
 1. In Android Studio, go to your module's build.gradle and add a new line to your dependencies:
 ```groovy
-compile 'com.github.bettehem:androidtools:1.1.3'
+compile 'com.github.bettehem:androidtools:1.1.4'
 ```
 Then sync your gradle and you're good to go!
 
@@ -362,6 +383,10 @@ AndroidTools is available here too:
 For you maven users out there, AndroidTools is available in the `mavenCentral()` repo too!
 
 # ChangeLog
+
+#### v1.1.4
+-When creating a custom notification, it uses the default notification sound.
+-Added Documentation for the new method added in v1.1.4-beta
 
 #### v1.1.4-beta (Might be unstable)
 -Added new method for checking if a file exists with only part of the name given.

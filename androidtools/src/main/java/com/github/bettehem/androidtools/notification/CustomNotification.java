@@ -18,6 +18,8 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.media.RingtoneManager;
+import android.net.Uri;
 import android.support.v4.app.NotificationCompat;
 
 public class CustomNotification {
@@ -35,6 +37,7 @@ public class CustomNotification {
         notificationBuilder.setSmallIcon(iconId);
         notificationBuilder.setContentTitle(title);
         notificationBuilder.setContentText(message);
+        notificationBuilder.setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION));
         notificationBuilder.build();
 
         PendingIntent resultPendingIntent = PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
