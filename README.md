@@ -366,9 +366,9 @@ CustomNotification.make(this, R.drawable.cool_pic, "Hello", "I'm a notification!
 
 # How to use
 
-<!--
-#### A Beta version is available: 1.1.4-beta, but it might be unstable. Use only for testing!
--->
+
+#### A Beta version is available: 1.1.5-beta, but it might have bugs. Use only for testing!
+
 
 1. In Android Studio, go to your module's build.gradle and add a new line to your dependencies:
 ```groovy
@@ -383,6 +383,9 @@ AndroidTools is available here too:
 For you maven users out there, AndroidTools is available in the `mavenCentral()` repo too!
 
 # ChangeLog
+
+#### v1.1.5-beta (Might have bugs)
+-Added a new Time object that should simplify handling time and dates more easily.
 
 #### v1.1.4
 -When creating a custom notification, it uses the default notification sound.
