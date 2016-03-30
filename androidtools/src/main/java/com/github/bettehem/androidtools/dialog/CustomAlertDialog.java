@@ -20,10 +20,15 @@ import android.support.v7.app.AlertDialog;
 
 import com.github.bettehem.androidtools.interfaces.DialogButtonsListener;
 
+import java.util.ArrayList;
+
 public class CustomAlertDialog {
     private AlertDialog alertDialog;
     private static DialogButtonsListener dialogActions;
     private static boolean hasListener = false;
+    private String tag = "";
+    private ArrayList<Tag> tags = new ArrayList<Tag>();
+    private String id = "";
 
     private CustomAlertDialog(AlertDialog.Builder builder){
         alertDialog = builder.create();
@@ -96,6 +101,12 @@ public class CustomAlertDialog {
     }
 
 
+
+    public CustomAlertDialog(Context context){
+        AlertDialog.Builder alertDialogBuilder;
+        alertDialogBuilder = new AlertDialog.Builder(context);
+        alertDialogBuilder.create();
+    }
 
     public CustomAlertDialog(Context context, String title, String message, boolean isCancelable, String positiveButtonText, final String id){
         final AlertDialog.Builder alertDialogBuilder;
@@ -230,9 +241,161 @@ public class CustomAlertDialog {
         }
     }
 
+    //returns true if text can be set
+    public boolean setButtonText(final int button, String text){
+        //check if button matches the AlertDialog button ids
+        if (button == AlertDialog.BUTTON_POSITIVE || button == AlertDialog.BUTTON_NEGATIVE || button == AlertDialog.BUTTON_NEUTRAL){
+
+            //check if alertDialog is initialized
+            if (alertDialog != null){
+
+                //check if the listener is initialized
+                if (dialogActions != null){
+                    alertDialog.setButton(button, text, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            switch (button){
+                                case AlertDialog.BUTTON_POSITIVE:
+                                    dialogActions.onPositiveButtonClicked(id);
+                                    break;
+
+                                case AlertDialog.BUTTON_NEGATIVE:
+                                    dialogActions.onNegativeButtonClicked(id);
+                                    break;
+
+                                case AlertDialog.BUTTON_NEUTRAL:
+                                    dialogActions.onNeutralButtonClicked(id);
+                                    break;
+                            }
+                        }
+                    });
+
+                    return true;
+                }else{
+                    return false;
+                }
+            }else{
+                return false;
+            }
+        }else{
+            return false;
+        }
+    }
+
+    public boolean setButtonText(final int button, String text, final DialogButtonsListener listener){
+        if (button == AlertDialog.BUTTON_POSITIVE || button == AlertDialog.BUTTON_NEGATIVE || button == AlertDialog.BUTTON_NEUTRAL){
+            if (alertDialog != null){
+                alertDialog.setButton(button, text, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        switch (button){
+                            case AlertDialog.BUTTON_POSITIVE:
+                                listener.onPositiveButtonClicked(id);
+                                break;
+
+                            case AlertDialog.BUTTON_NEGATIVE:
+                                listener.onNegativeButtonClicked(id);
+                                break;
+
+                            case AlertDialog.BUTTON_NEUTRAL:
+                                listener.onNeutralButtonClicked(id);
+                                break;
+                        }
+                    }
+                });
+                return true;
+            }else{
+                return false;
+            }
+        }else{
+            return false;
+        }
+    }
+
+    public void setTag(String tag){
+        this.tag = tag;
+    }
+
+    public String getTag(){
+        return tag;
+    }
+
+    public boolean setTag(String key, String value){
+        boolean invalidTag = false;
+        for(Tag t : tags){
+            if (key.contentEquals(t.key)){
+                invalidTag = true;
+            }
+        }
+
+        if (!invalidTag){
+            tags.add(new Tag(key, value));
+        }
+
+        return !invalidTag;
+    }
+
+    public String getTag(String key){
+        String value = "";
+        for(Tag t : tags){
+            if (t.key.contentEquals(key)){
+                value = t.value;
+                break;
+            }
+        }
+        return value;
+    }
+
+    public void clearTags(){
+        tag = "";
+        tags.clear();
+    }
+
+    public void clearTag(String key){
+        int index = 0;
+        boolean keyFound = false;
+
+        for (int i = 0; i < tags.size(); i++){
+            if (tags.get(i).key.contentEquals(key)){
+                index = i;
+                keyFound = true;
+            }
+        }
+
+        if (keyFound){
+            tags.remove(index);
+        }
+    }
+
+    public void setId(String id){
+        this.id = id;
+    }
+
+    public String getId(){
+        return id;
+    }
+
     public void show(){
         if (alertDialog != null){
             alertDialog.show();
+        }
+    }
+
+
+
+
+
+
+
+
+
+    private class Tag{
+        private String key;
+        private String value;
+
+        private Tag(String key, String value){
+            this.key = key;
+            this.value = value;
         }
     }
 }

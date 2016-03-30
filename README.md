@@ -367,7 +367,7 @@ CustomNotification.make(this, R.drawable.cool_pic, "Hello", "I'm a notification!
 # How to use
 
 
-#### A Beta version is available: 1.1.5-beta, but it might have bugs. Use only for testing!
+#### A Beta version is available: 1.1.6-beta, but it might have bugs. Use only for testing, or if you don't mind possible bugs!
 
 
 1. In Android Studio, go to your module's build.gradle and add a new line to your dependencies:
@@ -384,12 +384,22 @@ For you maven users out there, AndroidTools is available in the `mavenCentral()`
 
 # ChangeLog
 
+#### v1.1.6-beta (Might contain bugs)
+-Added a new features to CustomAlertDialogs:
+    *You can now add a tag when creating the dialog.
+    *You can add two kinds of tags.
+        >>The first type is a global tag for that object that you can set and get with just calling setTag("myTag"); to set it and getTag(); to get it.
+        >>The second type is a key based tag, that let's you save multiple tags with a unique key separating them from each other: setTag("myKey"); and getTag("myKey") to get it.
+        >>In theory, you can store one global tag, and 2147483647 tags that are assigned with keys.
+    *You can now add buttons when using the non-static way of using CustomAlertDialog.
+    *You can now create a CustomAlertDialog by just using the new constructor that takes only Context as a parameter.
+
 #### v1.1.5-beta (Might have bugs)
 -Added a new Time object that should simplify handling time and dates more easily.
 
 #### v1.1.4
 -When creating a custom notification, it uses the default notification sound.
--Added Documentation for the new method added in v1.1.4-beta
+-Added Documentation for the new method added in v1.1.4-beta.
 
 #### v1.1.4-beta (Might be unstable)
 -Added new method for checking if a file exists with only part of the name given.
