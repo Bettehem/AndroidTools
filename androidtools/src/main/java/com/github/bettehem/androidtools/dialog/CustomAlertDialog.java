@@ -22,13 +22,14 @@ import com.github.bettehem.androidtools.interfaces.DialogButtonsListener;
 
 import java.util.ArrayList;
 
-public class CustomAlertDialog{
+public class CustomAlertDialog  {
     private AlertDialog alertDialog;
     private static DialogButtonsListener dialogActions;
     private static boolean hasListener = false;
     private String tag = "";
     private ArrayList<Tag> tags = new ArrayList<Tag>();
     private String id = "";
+    private AlertDialog.Builder alertDialogBuilder;
 
     private CustomAlertDialog(AlertDialog.Builder builder){
         alertDialog = builder.create();
@@ -101,16 +102,12 @@ public class CustomAlertDialog{
     }
 
 
-
-    public CustomAlertDialog customAlertDialog(Context context){
-        final AlertDialog.Builder alertDialogBuilder;
+    public CustomAlertDialog(Context context){
         alertDialogBuilder = new AlertDialog.Builder(context);
-        alertDialogBuilder.create();
-        return new CustomAlertDialog(alertDialogBuilder);
+        alertDialog = alertDialogBuilder.create();
     }
 
     public CustomAlertDialog(Context context, String title, String message, boolean isCancelable, String positiveButtonText, final String id){
-        final AlertDialog.Builder alertDialogBuilder;
         alertDialogBuilder = new AlertDialog.Builder(context);
         alertDialogBuilder.setTitle(title);
         alertDialogBuilder.setMessage(message);
@@ -130,11 +127,10 @@ public class CustomAlertDialog{
                 }
             });
         }
-        alertDialogBuilder.create();
+        alertDialog = alertDialogBuilder.create();
     }
 
     public CustomAlertDialog(Context context, String title, String message, boolean isCancelable, String positiveButtonText, String negativeButtonText, final String id){
-        final AlertDialog.Builder alertDialogBuilder;
         alertDialogBuilder = new AlertDialog.Builder(context);
         alertDialogBuilder.setTitle(title);
         alertDialogBuilder.setMessage(message);
@@ -166,11 +162,10 @@ public class CustomAlertDialog{
                 }
             });
         }
-        alertDialogBuilder.create();
+        alertDialog = alertDialogBuilder.create();
     }
 
     public CustomAlertDialog(Context context, String title, String message, boolean isCancelable, String positiveButtonText, String neutralButtonText, String negativeButtonText, final String id){
-        final AlertDialog.Builder alertDialogBuilder;
         alertDialogBuilder = new AlertDialog.Builder(context);
         alertDialogBuilder.setTitle(title);
         alertDialogBuilder.setMessage(message);
@@ -214,7 +209,7 @@ public class CustomAlertDialog{
                 }
             });
         }
-        alertDialogBuilder.create();
+        alertDialog = alertDialogBuilder.create();
     }
 
     public void setDialogButtonsListener(DialogButtonsListener dialogButtonsListener){

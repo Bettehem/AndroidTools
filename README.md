@@ -367,7 +367,7 @@ CustomNotification.make(this, R.drawable.cool_pic, "Hello", "I'm a notification!
 # How to use
 
 
-#### A Beta version is available: 1.1.61-beta, but it might have bugs. Use only for testing, or if you don't mind possible bugs!
+#### A Beta version is available: 1.1.63-beta, but it might have bugs. Use only for testing, or if you don't mind possible bugs!
 
 
 1. In Android Studio, go to your module's build.gradle and add a new line to your dependencies:
@@ -383,6 +383,9 @@ AndroidTools is available here too:
 For you maven users out there, AndroidTools is available in the `mavenCentral()` repo too!
 
 # ChangeLog
+
+#### v.1.1.63-beta (Might contain bugs)
+-Fixed CustomAlertDialog bugs, hopefully all of them.
 
 #### v1.1.6-beta (Might contain bugs)
 -Added a new features to CustomAlertDialogs:
