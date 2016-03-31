@@ -22,7 +22,7 @@ import com.github.bettehem.androidtools.interfaces.DialogButtonsListener;
 
 import java.util.ArrayList;
 
-public class CustomAlertDialog {
+public class CustomAlertDialog{
     private AlertDialog alertDialog;
     private static DialogButtonsListener dialogActions;
     private static boolean hasListener = false;
@@ -102,10 +102,11 @@ public class CustomAlertDialog {
 
 
 
-    public CustomAlertDialog(Context context){
-        AlertDialog.Builder alertDialogBuilder;
+    public CustomAlertDialog customAlertDialog(Context context){
+        final AlertDialog.Builder alertDialogBuilder;
         alertDialogBuilder = new AlertDialog.Builder(context);
         alertDialogBuilder.create();
+        return new CustomAlertDialog(alertDialogBuilder);
     }
 
     public CustomAlertDialog(Context context, String title, String message, boolean isCancelable, String positiveButtonText, final String id){
