@@ -7,7 +7,8 @@ A set of tools, useful when creating android apps.
 1. [SharedPreferences](https://github.com/Bettehem/AndroidTools#sharedpreferences)
 2. [CustomAlertDialog](https://github.com/Bettehem/AndroidTools#customalertdialog)
 3. [CustomNotification](https://github.com/Bettehem/AndroidTools#customnotification)
-4. [How to use](https://github.com/Bettehem/AndroidTools#how-to-use)
+4. [Time](https://github.com/Bettehem/AndroidTools#time)
+5. [How to use](https://github.com/Bettehem/AndroidTools#how-to-use)
 
 # SharedPreferences
 Using the Preferences class provided by this tool, you can easily manage your SharedPreferences.
@@ -364,6 +365,51 @@ CustomNotification.make(this, R.drawable.cool_pic, "Hello", "I'm a notification!
 ###### Note that you can only use so long messages, because CustomNotification doesn't yet support expansion.
 
 
+# Time
+By using the Time Object, you can easily manage time in your project.
+The Time Object is basically a simplified Calendar Object.
+A time object can be created using one of the four constructors:
+
+</br />
+`public Time (Calendar date)`
+</br />
+`public Time (int year, int month, int date, int hour, int minute, int second)`
+</br />
+`public Time (Date date)`
+</br />
+`public Time (long milliseconds)`
+</br />
+
+#### Example: 
+```groovy
+//Create Time object
+Time time1 = new Time(2016, 8, 4, 6, 30, 0)
+
+
+//Create another Time object
+
+//First create a Calendar object as an example
+Calendar calendar = Calendar.getInstance();
+
+//Create the second Time Object
+Time time2 = new Time(calendar);
+```
+
+It's possible to compare Time Objects.
+#### Example:
+```groovy
+//Create a ArrayList of Time ojects
+Arraylist<Time> timeList = new ArrayList<>();
+
+//add the previously created Time Objects to the list
+timelist.add(time1);
+timelist.add(time2);
+
+//Sort the list
+Collections.sort(timeList);
+```
+
+
 # How to use
 
 
@@ -383,6 +429,10 @@ AndroidTools is available here too:
 For you maven users out there, AndroidTools is available in the `mavenCentral()` repo too!
 
 # ChangeLog
+
+#### v.1.1.7
+-Added new Time constructor:
+    *You can now create Time Objects with passing milliseconds to the constructor.
 
 #### v.1.1.63-beta (Might contain bugs)
 -Fixed CustomAlertDialog bugs, hopefully all of them.

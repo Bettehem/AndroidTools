@@ -15,6 +15,7 @@ package com.github.bettehem.androidtools.misc;
  */
 
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.Date;
 
 public class Time implements Comparable<Time>{
@@ -52,6 +53,10 @@ public class Time implements Comparable<Time>{
         hour = checkValue(calendar.get(Calendar.HOUR_OF_DAY));
         minute = checkValue(calendar.get(Calendar.MINUTE));
         second = checkValue(calendar.get(Calendar.SECOND));
+    }
+    public Time(long milliseconds){
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(milliseconds);
     }
 
     private String checkValue (int date){
