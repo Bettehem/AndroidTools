@@ -430,7 +430,10 @@ For you maven users out there, AndroidTools is available in the `mavenCentral()`
 
 # ChangeLog
 
-#### v.1.1.7
+#### v1.1.71
+-Fixed Preferences.loadBoolean method with filename specification not being static
+
+#### v1.1.7
 -Added new Time constructor:
     *You can now create Time Objects with passing milliseconds to the constructor.
 

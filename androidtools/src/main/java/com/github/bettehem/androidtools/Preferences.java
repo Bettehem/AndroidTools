@@ -313,7 +313,7 @@ public final class Preferences {
      *
      * @return Returns the requested boolean value. If not found, returns false.
      */
-    public boolean loadBoolean(Context context, String valueName, String preferenceFilename) {
+    public static boolean loadBoolean(Context context, String valueName, String preferenceFilename) {
         sharedPreferences = context.getSharedPreferences(preferenceFilename, Context.MODE_PRIVATE);
         return sharedPreferences.getBoolean(valueName, false);
     }
