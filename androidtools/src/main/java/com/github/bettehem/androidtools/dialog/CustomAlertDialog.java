@@ -16,13 +16,14 @@ package com.github.bettehem.androidtools.dialog;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.graphics.Color;
 import android.support.v7.app.AlertDialog;
 
 import com.github.bettehem.androidtools.interfaces.DialogButtonsListener;
 
 import java.util.ArrayList;
 
-public class CustomAlertDialog  {
+public class CustomAlertDialog implements DialogInterface.OnShowListener {
     private AlertDialog alertDialog;
     private static DialogButtonsListener dialogActions;
     private static boolean hasListener = false;
@@ -30,6 +31,10 @@ public class CustomAlertDialog  {
     private ArrayList<Tag> tags = new ArrayList<Tag>();
     private String id = "";
     private AlertDialog.Builder alertDialogBuilder;
+    private boolean setButtonColor = false;
+    private boolean setAllButtonsColor = false;
+    private int mWhichButton;
+    private int buttonColor;
 
     private CustomAlertDialog(AlertDialog.Builder builder){
         alertDialog = builder.create();
@@ -374,15 +379,39 @@ public class CustomAlertDialog  {
     public void show(){
         if (alertDialog != null){
             alertDialog.show();
+            alertDialog.setOnShowListener(this);
         }
     }
 
+    public void setButtonColor(int whichButton, int color){
+        setButtonColor = true;
+        setAllButtonsColor = false;
+        mWhichButton = whichButton;
+        if (alertDialog.isShowing()){
+            alertDialog.getButton(whichButton).setTextColor(color);
+        }
+    }
 
+    public void setAllButtonsColor(int color){
+        setAllButtonsColor = true;
+        setButtonColor = false;
+        if (alertDialog.isShowing()){
+            alertDialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(color);
+            alertDialog.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(color);
+            alertDialog.getButton(AlertDialog.BUTTON_NEUTRAL).setTextColor(color);
+        }
+    }
 
-
-
-
-
+    @Override
+    public void onShow(DialogInterface dialog) {
+        if (setButtonColor){
+            alertDialog.getButton(mWhichButton).setTextColor(buttonColor);
+        }else if (setAllButtonsColor){
+            alertDialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(buttonColor);
+            alertDialog.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(buttonColor);
+            alertDialog.getButton(AlertDialog.BUTTON_NEUTRAL).setTextColor(buttonColor);
+        }
+    }
 
 
     private class Tag{

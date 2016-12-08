@@ -153,6 +153,7 @@ Features:
 -Up to three buttons with any text you want
 -Custom titles
 -Custom messages
+-Custom button colors
 -Easy management through a listener.
 
 There are several ways on how CustomAlertDialog can be used.
@@ -429,6 +430,9 @@ AndroidTools is available here too:
 For you maven users out there, AndroidTools is available in the `mavenCentral()` repo too!
 
 # ChangeLog
+
+#### v.1.1.72
+-Added possibility to set button color for CustomAlertDialog
 
 #### v1.1.71
 -Fixed Preferences.loadBoolean method with filename specification not being static
