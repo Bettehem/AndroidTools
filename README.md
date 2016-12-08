@@ -431,7 +431,11 @@ For you maven users out there, AndroidTools is available in the `mavenCentral()`
 
 # ChangeLog
 
-#### v.1.1.72
+#### v1.1.73
+-Changed target sdk level to 25
+-Removed redundant import
+
+#### v1.1.72
 -Added possibility to set button color for CustomAlertDialog
 
 #### v1.1.71

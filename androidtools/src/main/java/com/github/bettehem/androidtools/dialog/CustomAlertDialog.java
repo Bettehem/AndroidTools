@@ -16,7 +16,6 @@ package com.github.bettehem.androidtools.dialog;
 
 import android.content.Context;
 import android.content.DialogInterface;
-import android.graphics.Color;
 import android.support.v7.app.AlertDialog;
 
 import com.github.bettehem.androidtools.interfaces.DialogButtonsListener;
