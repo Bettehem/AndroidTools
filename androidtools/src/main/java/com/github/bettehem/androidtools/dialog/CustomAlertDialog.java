@@ -16,13 +16,14 @@ package com.github.bettehem.androidtools.dialog;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 
 import com.github.bettehem.androidtools.interfaces.DialogButtonsListener;
 
 import java.util.ArrayList;
 
-public class CustomAlertDialog implements DialogInterface.OnShowListener {
+public class CustomAlertDialog extends AlertDialog implements DialogInterface.OnShowListener {
     private AlertDialog alertDialog;
     private static DialogButtonsListener dialogActions;
     private static boolean hasListener = false;
@@ -35,11 +36,12 @@ public class CustomAlertDialog implements DialogInterface.OnShowListener {
     private int mWhichButton;
     private int buttonColor;
 
-    private CustomAlertDialog(AlertDialog.Builder builder){
+    private CustomAlertDialog(Context context, AlertDialog.Builder builder){
+        super(context);
         alertDialog = builder.create();
     }
 
-    public static CustomAlertDialog make(Context context, String title, String message, boolean isCancelable, String positiveButtonText, DialogButtonsListener dialogButtonsListener, final String id){
+    public static CustomAlertDialog make(Context context, String title, String message, boolean isCancelable, String positiveButtonText, @Nullable DialogButtonsListener dialogButtonsListener, @Nullable final String id){
         dialogActions = dialogButtonsListener;
         final AlertDialog.Builder alertDialogBuilder;
         alertDialogBuilder = new AlertDialog.Builder(context);
@@ -49,13 +51,15 @@ public class CustomAlertDialog implements DialogInterface.OnShowListener {
         alertDialogBuilder.setPositiveButton(positiveButtonText, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                dialogActions.onPositiveButtonClicked(id);
+                if (dialogActions != null){
+                    dialogActions.onPositiveButtonClicked(id);
+                }
             }
         });
-        return new CustomAlertDialog(alertDialogBuilder);
+        return new CustomAlertDialog(context, alertDialogBuilder);
     }
 
-    public static CustomAlertDialog make(Context context, String title, String message, boolean isCancelable, String positiveButtonText, String negativeButtonText, DialogButtonsListener dialogButtonsListener, final String id){
+    public static CustomAlertDialog make(Context context, String title, String message, boolean isCancelable, String positiveButtonText, String negativeButtonText, @Nullable DialogButtonsListener dialogButtonsListener, @Nullable final String id){
         dialogActions = dialogButtonsListener;
         final AlertDialog.Builder alertDialogBuilder;
         alertDialogBuilder = new AlertDialog.Builder(context);
@@ -65,19 +69,23 @@ public class CustomAlertDialog implements DialogInterface.OnShowListener {
         alertDialogBuilder.setPositiveButton(positiveButtonText, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                dialogActions.onPositiveButtonClicked(id);
+                if (dialogActions != null){
+                    dialogActions.onPositiveButtonClicked(id);
+                }
             }
         });
         alertDialogBuilder.setNegativeButton(negativeButtonText, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                dialogActions.onNegativeButtonClicked(id);
+                if (dialogActions != null){
+                    dialogActions.onNegativeButtonClicked(id);
+                }
             }
         });
-        return new CustomAlertDialog(alertDialogBuilder);
+        return new CustomAlertDialog(context, alertDialogBuilder);
     }
 
-    public static CustomAlertDialog make(Context context, String title, String message, boolean isCancelable, String positiveButtonText, String neutralButtonText, String negativeButtonText, DialogButtonsListener dialogButtonsListener, final String id){
+    public static CustomAlertDialog make(Context context, String title, String message, boolean isCancelable, String positiveButtonText, String neutralButtonText, String negativeButtonText, @Nullable DialogButtonsListener dialogButtonsListener, @Nullable final String id){
         dialogActions = dialogButtonsListener;
         final AlertDialog.Builder alertDialogBuilder;
         alertDialogBuilder = new AlertDialog.Builder(context);
@@ -87,31 +95,39 @@ public class CustomAlertDialog implements DialogInterface.OnShowListener {
         alertDialogBuilder.setPositiveButton(positiveButtonText, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                dialogActions.onPositiveButtonClicked(id);
+                if (dialogActions != null){
+                    dialogActions.onPositiveButtonClicked(id);
+                }
             }
         });
         alertDialogBuilder.setNeutralButton(neutralButtonText, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                dialogActions.onNeutralButtonClicked(id);
+                if (dialogActions != null){
+                    dialogActions.onNeutralButtonClicked(id);
+                }
             }
         });
         alertDialogBuilder.setNegativeButton(negativeButtonText, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                dialogActions.onNegativeButtonClicked(id);
+                if (dialogActions != null){
+                    dialogActions.onNegativeButtonClicked(id);
+                }
             }
         });
-        return new CustomAlertDialog(alertDialogBuilder);
+        return new CustomAlertDialog(context, alertDialogBuilder);
     }
 
 
     public CustomAlertDialog(Context context){
+        super(context);
         alertDialogBuilder = new AlertDialog.Builder(context);
         alertDialog = alertDialogBuilder.create();
     }
 
     public CustomAlertDialog(Context context, String title, String message, boolean isCancelable, String positiveButtonText, final String id){
+        super(context);
         alertDialogBuilder = new AlertDialog.Builder(context);
         alertDialogBuilder.setTitle(title);
         alertDialogBuilder.setMessage(message);
@@ -135,6 +151,7 @@ public class CustomAlertDialog implements DialogInterface.OnShowListener {
     }
 
     public CustomAlertDialog(Context context, String title, String message, boolean isCancelable, String positiveButtonText, String negativeButtonText, final String id){
+        super(context);
         alertDialogBuilder = new AlertDialog.Builder(context);
         alertDialogBuilder.setTitle(title);
         alertDialogBuilder.setMessage(message);
@@ -170,6 +187,7 @@ public class CustomAlertDialog implements DialogInterface.OnShowListener {
     }
 
     public CustomAlertDialog(Context context, String title, String message, boolean isCancelable, String positiveButtonText, String neutralButtonText, String negativeButtonText, final String id){
+        super(context);
         alertDialogBuilder = new AlertDialog.Builder(context);
         alertDialogBuilder.setTitle(title);
         alertDialogBuilder.setMessage(message);
@@ -375,6 +393,7 @@ public class CustomAlertDialog implements DialogInterface.OnShowListener {
         return id;
     }
 
+    @Override
     public void show(){
         if (alertDialog != null){
             alertDialog.show();
